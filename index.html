@@ -5,232 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rúbrica de Evaluación – Fisiopatología</title>
     <style>
-        /* Estilos generales */
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f7f9;
-            color: #333;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-        }
-
-        header {
-            background-color: #007bff;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 1.8em;
-        }
-
-        header p {
-            margin: 5px 0 0;
-            font-size: 1em;
-            opacity: 0.9;
-        }
-
-        main {
-            max-width: 1000px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 30px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-
-        h2 {
-            color: #0056b3;
-            border-bottom: 2px solid #e9ecef;
-            padding-bottom: 5px;
-            margin-top: 25px;
-        }
-
-        /* Sección de información y instrucciones */
-        .info-section input {
-            border: none;
-            border-bottom: 1px solid #ccc;
-            font-size: 1em;
-            padding: 2px;
-            width: 300px;
-            margin-left: 5px;
-        }
-
-        .instructions-section p {
-            font-size: 0.95em;
-            color: #555;
-        }
-
-        /* Tabla de la rúbrica */
-        table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            margin-top: 20px;
-        }
-
-        thead th {
-            background-color: #007bff;
-            color: #fff;
-            font-weight: bold;
-            text-align: center;
-            padding: 12px 8px;
-            border-top-left-radius: 5px;
-            border-top-right-radius: 5px;
-        }
-
-        tbody td {
-            border: 1px solid #dee2e6;
-            padding: 15px;
-            text-align: center;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s;
-        }
-
-        tbody tr:hover td {
-            background-color: #e9ecef;
-        }
-
-        tbody td.selected {
-            background-color: #28a745;
-            color: #fff;
-            border-color: #218838;
-            transform: scale(1.02);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        }
-
-        tbody td:first-child {
-            font-weight: bold;
-            background-color: #f8f9fa;
-            text-align: left;
-            cursor: default;
-            border-right: none;
-        }
-
-        /* Sección de resultados y botones */
-        .results-section {
-            margin-top: 30px;
-            text-align: center;
-        }
-
-        .result-box {
-            background-color: #eaf5ff;
-            border: 1px solid #cce5ff;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-            display: inline-block;
-        }
-
-        #final-score {
-            font-size: 2.5em;
-            font-weight: bold;
-            color: #007bff;
-            margin-right: 10px;
-        }
-
-        #performance-level {
-            font-size: 1.5em;
-            font-weight: bold;
-            color: #28a745; /* Color por defecto */
-        }
-
-        .score-scale {
-            font-size: 0.9em;
-            color: #6c757d;
-        }
-
-        .button-container {
-            margin-top: 20px;
-        }
-
-        #save-button {
-            padding: 12px 25px;
-            font-size: 1.1em;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        #save-button:hover {
-            background-color: #0056b3;
-        }
-
-        #save-button:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-        }
-
-        #status-message {
-            margin-top: 15px;
-            font-size: 1em;
-            font-weight: bold;
-        }
-
-        /* Responsive design */
+        /* Tus estilos CSS van aquí (sin cambios) */
+        body { font-family: 'Arial', sans-serif; background-color: #f4f7f9; color: #333; line-height: 1.6; margin: 0; padding: 20px; }
+        header { background-color: #007bff; color: #fff; padding: 20px; text-align: center; border-radius: 8px; margin-bottom: 20px; }
+        header h1 { margin: 0; font-size: 1.8em; }
+        header p { margin: 5px 0 0; font-size: 1em; opacity: 0.9; }
+        main { max-width: 1000px; margin: 0 auto; background: #fff; padding: 30px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-radius: 8px; }
+        h2 { color: #0056b3; border-bottom: 2px solid #e9ecef; padding-bottom: 5px; margin-top: 25px; }
+        .info-section input { border: none; border-bottom: 1px solid #ccc; font-size: 1em; padding: 2px; width: 300px; margin-left: 5px; }
+        .instructions-section p { font-size: 0.95em; color: #555; }
+        table { width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 20px; }
+        thead th { background-color: #007bff; color: #fff; font-weight: bold; text-align: center; padding: 12px 8px; border-top-left-radius: 5px; border-top-right-radius: 5px; }
+        tbody td { border: 1px solid #dee2e6; padding: 15px; text-align: center; cursor: pointer; transition: background-color 0.3s, transform 0.2s; }
+        tbody tr:hover td { background-color: #e9ecef; }
+        tbody td.selected { background-color: #28a745; color: #fff; border-color: #218838; transform: scale(1.02); box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); }
+        tbody td:first-child { font-weight: bold; background-color: #f8f9fa; text-align: left; cursor: default; border-right: none; }
+        .results-section { margin-top: 30px; text-align: center; }
+        .result-box { background-color: #eaf5ff; border: 1px solid #cce5ff; border-radius: 8px; padding: 20px; margin-bottom: 20px; display: inline-block; }
+        #final-score { font-size: 2.5em; font-weight: bold; color: #007bff; margin-right: 10px; }
+        #performance-level { font-size: 1.5em; font-weight: bold; color: #28a745; }
+        .score-scale { font-size: 0.9em; color: #6c757d; }
+        .button-container { margin-top: 20px; }
+        #save-button { padding: 12px 25px; font-size: 1.1em; background-color: #007bff; color: #fff; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s; }
+        #save-button:hover { background-color: #0056b3; }
+        #save-button:disabled { background-color: #ccc; cursor: not-allowed; }
+        #status-message { margin-top: 15px; font-size: 1em; font-weight: bold; }
         @media (max-width: 768px) {
-            table, thead, tbody, th, td, tr {
-                display: block;
-            }
-
-            thead tr {
-                position: absolute;
-                top: -9999px;
-                left: -9999px;
-            }
-
-            tr {
-                margin-bottom: 20px;
-                border: 1px solid #dee2e6;
-                border-radius: 5px;
-            }
-
-            td {
-                border: none;
-                border-bottom: 1px solid #dee2e6;
-                text-align: right;
-                padding-left: 50%;
-                position: relative;
-            }
-
-            td:before {
-                position: absolute;
-                left: 6px;
-                width: 45%;
-                padding-right: 10px;
-                white-space: nowrap;
-                text-align: left;
-                font-weight: bold;
-            }
-
-            /* Asignar etiquetas a las celdas para el modo móvil */
-            tr#conocimiento td:nth-of-type(2):before { content: "Excelente:"; }
-            tr#conocimiento td:nth-of-type(3):before { content: "Bueno:"; }
-            tr#conocimiento td:nth-of-type(4):before { content: "Regular:"; }
-            tr#conocimiento td:nth-of-type(5):before { content: "Deficiente:"; }
-
-            tr#razonamiento td:nth-of-type(2):before { content: "Excelente:"; }
-            tr#razonamiento td:nth-of-type(3):before { content: "Bueno:"; }
-            tr#razonamiento td:nth-of-type(4):before { content: "Regular:"; }
-            tr#razonamiento td:nth-of-type(5):before { content: "Deficiente:"; }
-
-            tr#aplicacion td:nth-of-type(2):before { content: "Excelente:"; }
-            tr#aplicacion td:nth-of-type(3):before { content: "Bueno:"; }
-            tr#aplicacion td:nth-of-type(4):before { content: "Regular:"; }
-            tr#aplicacion td:nth-of-type(5):before { content: "Deficiente:"; }
-
-            tr#claridad td:nth-of-type(2):before { content: "Excelente:"; }
-            tr#claridad td:nth-of-type(3):before { content: "Bueno:"; }
-            tr#claridad td:nth-of-type(4):before { content: "Regular:"; }
-            tr#claridad td:nth-of-type(5):before { content: "Deficiente:"; }
+            table, thead, tbody, th, td, tr { display: block; }
+            thead tr { position: absolute; top: -9999px; left: -9999px; }
+            tr { margin-bottom: 20px; border: 1px solid #dee2e6; border-radius: 5px; }
+            td { border: none; border-bottom: 1px solid #dee2e6; text-align: right; padding-left: 50%; position: relative; }
+            td:before { position: absolute; left: 6px; width: 45%; padding-right: 10px; white-space: nowrap; text-align: left; font-weight: bold; }
+            tr#conocimiento td:nth-of-type(2):before { content: "Excelente:"; } tr#conocimiento td:nth-of-type(3):before { content: "Bueno:"; } tr#conocimiento td:nth-of-type(4):before { content: "Regular:"; } tr#conocimiento td:nth-of-type(5):before { content: "Deficiente:"; }
+            tr#razonamiento td:nth-of-type(2):before { content: "Excelente:"; } tr#razonamiento td:nth-of-type(3):before { content: "Bueno:"; } tr#razonamiento td:nth-of-type(4):before { content: "Regular:"; } tr#razonamiento td:nth-of-type(5):before { content: "Deficiente:"; }
+            tr#aplicacion td:nth-of-type(2):before { content: "Excelente:"; } tr#aplicacion td:nth-of-type(3):before { content: "Bueno:"; } tr#aplicacion td:nth-of-type(4):before { content: "Regular:"; } tr#aplicacion td:nth-of-type(5):before { content: "Deficiente:"; }
+            tr#claridad td:nth-of-type(2):before { content: "Excelente:"; } tr#claridad td:nth-of-type(3):before { content: "Bueno:"; } tr#claridad td:nth-of-type(4):before { content: "Regular:"; } tr#claridad td:nth-of-type(5):before { content: "Deficiente:"; }
         }
     </style>
 </head>
@@ -317,11 +126,8 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // ************************************************************
-            // CAMBIO CLAVE: Usa la URL de la aplicación web desplegada (exec), no la de edición.
-            // Asegúrate de que esta URL es la que obtienes después de desplegar tu Apps Script.
-            // ************************************************************
-            const appsScriptUrl = 'https://script.google.com/macros/s/AKfycbzN7A5k1-_EfQ_5Z9X4T4XjzkWGcgiE81cRquhsxFQj_nXhTSgy3n3JIRReMEO78J3a/exec'; 
+            // Asegúrate de que esta URL sea la correcta de tu despliegue de Apps Script.
+            const appsScriptUrl = 'https://script.google.com/macros/s/AKfycbzN7A5k1-_EfQ_5Z9X4T4XjzkWGcgiE81cRquhsxFQj_nXhTSgy3n3JIRReMEO78J3a/exec';
 
             const tableBody = document.querySelector('tbody');
             const finalScoreSpan = document.getElementById('final-score');
@@ -331,129 +137,111 @@
 
             const totalCriterios = 4;
             const scores = {
-                conocimiento: 0,
-                razonamiento: 0,
-                aplicacion: 0,
-                claridad: 0
+                conocimiento: null, // Usamos null para saber si ya se ha seleccionado algo.
+                razonamiento: null,
+                aplicacion: null,
+                claridad: null
             };
 
             tableBody.addEventListener('click', (event) => {
                 const clickedCell = event.target.closest('td');
-                if (!clickedCell || clickedCell.cellIndex === 0) { // Evita seleccionar la primera columna de criterio
-                    return;
-                }
+                if (!clickedCell || clickedCell.cellIndex === 0) return;
 
                 const row = clickedCell.closest('tr');
                 const rowId = row.id;
                 const score = parseInt(clickedCell.dataset.score, 10);
 
-                // Remover 'selected' de otras celdas en la misma fila
                 Array.from(row.querySelectorAll('td')).forEach(td => td.classList.remove('selected'));
-                // Agregar 'selected' a la celda clicada
                 clickedCell.classList.add('selected');
-
-                // Almacenar el puntaje
                 scores[rowId] = score;
 
                 updateScore();
             });
 
             function updateScore() {
-                const scoreArray = Object.values(scores);
+                const scoreArray = Object.values(scores).filter(s => s !== null);
                 const totalScore = scoreArray.reduce((sum, score) => sum + score, 0);
-                const finalScore = totalScore / totalCriterios;
+                const finalScore = scoreArray.length < totalCriterios ? 0 : totalScore / totalCriterios;
 
                 finalScoreSpan.textContent = finalScore.toFixed(2);
                 updatePerformanceLevel(finalScore);
             }
 
             function updatePerformanceLevel(score) {
-                let level = '';
-                let color = '#dc3545'; // Default color for 'No satisfactorio'
+                let level = 'No satisfactorio';
+                let color = '#dc3545';
 
-                if (score >= 90) {
-                    level = 'Excelente';
-                    color = '#28a745';
-                } else if (score >= 80) {
-                    level = 'Muy bueno';
-                    color = '#007bff';
-                } else if (score >= 70) {
-                    level = 'Aceptable';
-                    color = '#ffc107';
-                } else if (score >= 60) {
-                    level = 'Deficiente';
-                    color = '#fd7e14';
-                } else {
-                    level = 'No satisfactorio';
-                }
+                if (score >= 90) { level = 'Excelente'; color = '#28a745'; } 
+                else if (score >= 80) { level = 'Muy bueno'; color = '#007bff'; } 
+                else if (score >= 70) { level = 'Aceptable'; color = '#ffc107'; } 
+                else if (score >= 60) { level = 'Deficiente'; color = '#fd7e14'; }
 
                 performanceLevelSpan.textContent = level;
                 performanceLevelSpan.style.color = color;
             }
 
             saveButton.addEventListener('click', async () => {
-                statusMessage.textContent = 'Guardando...';
-                saveButton.disabled = true;
-
                 const nombre = document.getElementById('nombre-evaluado').value;
                 const servicio = document.getElementById('servicio').value;
-                const finalScore = finalScoreSpan.textContent; // Obtiene el texto formateado
-                const performanceLevel = performanceLevelSpan.textContent;
-
-                // Validación básica de campos
-                if (!nombre.trim() || !servicio.trim() || Object.values(scores).some(score => score === 0)) {
-                    statusMessage.textContent = 'Por favor, complete todos los campos y seleccione una calificación para cada criterio.';
+                
+                // Validación de campos
+                if (!nombre.trim() || !servicio.trim()) {
+                    statusMessage.textContent = 'Por favor, complete el nombre y el servicio.';
                     statusMessage.style.color = 'orange';
-                    saveButton.disabled = false;
                     return;
                 }
 
+                if (Object.values(scores).some(s => s === null)) {
+                    statusMessage.textContent = 'Por favor, seleccione una calificación para todos los criterios.';
+                    statusMessage.style.color = 'orange';
+                    return;
+                }
+
+                statusMessage.textContent = 'Guardando...';
+                statusMessage.style.color = 'black';
+                saveButton.disabled = true;
 
                 const data = {
                     nombre: nombre,
                     servicio: servicio,
                     calificaciones: scores,
-                    puntajeFinal: finalScore,
-                    nivelDesempeno: performanceLevel
+                    puntajeFinal: finalScoreSpan.textContent,
+                    nivelDesempeno: performanceLevelSpan.textContent
                 };
 
                 try {
+                    // ---- INICIO DE LA CORRECCIÓN CLAVE ----
+                    // Cambiamos el 'Content-Type' a 'text/plain'. Esto convierte la solicitud en una "solicitud simple"
+                    // que no requiere una verificación de seguridad CORS previa (preflight), evitando el NetworkError.
+                    // Google Apps Script puede procesar el JSON enviado como texto sin problemas.
                     const response = await fetch(appsScriptUrl, {
                         method: 'POST',
                         headers: {
-                            'Content-Type': 'application/json'
+                          'Content-Type': 'text/plain;charset=utf-8',
                         },
-                        body: JSON.stringify(data),
-                        // ************************************************************
-                        // IMPORTANTE: Modo CORS. 'no-cors' no funcionará si necesitas leer la respuesta.
-                        // Para leer la respuesta (como `response.ok`), necesitas 'cors'.
-                        // El servidor de Apps Script (doPost) debe configurar el "Access-Control-Allow-Origin"
-                        // para que esto funcione. Google Apps Script lo hace automáticamente al desplegar.
-                        // ************************************************************
-                        mode: 'cors' 
+                        body: JSON.stringify(data), 
                     });
+                    // ---- FIN DE LA CORRECCIÓN CLAVE ----
+                    
+                    if (!response.ok) {
+                        // Si la respuesta del servidor no es exitosa (ej. error 500)
+                        throw new Error(`Respuesta del servidor no fue OK: ${response.statusText}`);
+                    }
 
-                    // Si el servidor de Apps Script no responde con el MimeType JSON correcto
-                    // o no permite CORS, `response.json()` podría fallar.
-                    // Aquí asumimos que Apps Script responde con JSON.
-                    const result = await response.json(); 
+                    const result = await response.json(); // La respuesta sigue siendo un JSON que podemos leer.
 
                     if (result.status === 'success') {
-                        statusMessage.textContent = '¡Evaluación guardada con éxito!';
+                        statusMessage.textContent = result.message;
                         statusMessage.style.color = 'green';
-                        // Opcional: limpiar los campos o resetear la rúbrica
-                        // document.getElementById('nombre-evaluado').value = '';
-                        // document.getElementById('servicio').value = '';
-                        // Object.keys(scores).forEach(key => scores[key] = 0);
-                        // tableBody.querySelectorAll('.selected').forEach(td => td.classList.remove('selected'));
-                        // updateScore();
                     } else {
-                        statusMessage.textContent = `Error al guardar: ${result.message}`;
+                        // Muestra el mensaje de error específico enviado desde Apps Script
+                        statusMessage.textContent = `Error del servidor: ${result.message}`;
                         statusMessage.style.color = 'red';
                     }
+
                 } catch (error) {
-                    console.error('Error:', error);
-                    statusMessage.textContent = `Error de conexión o servidor: ${error.message}. Asegúrate de que la URL de Apps Script es correcta y está desplegada.`;
+                    console.error('Error en fetch:', error);
+                    statusMessage.textContent = `Error de conexión. Verifique la consola (F12) para más detalles.`;
                     statusMessage.style.color = 'red';
                 } finally {
                     saveButton.disabled = false;
