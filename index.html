@@ -317,7 +317,11 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const appsScriptUrl = 'https://script.google.com/macros/s/AKfycbzN7A5k1-_EfQ_5Z9X4T4XjzkWGcgiE81cRquhsxFQj_nXhTSgy3n3JIRReMEO78J3a/exec';
+            // ************************************************************
+            // CAMBIO CLAVE: Usa la URL de la aplicación web desplegada (exec), no la de edición.
+            // Asegúrate de que esta URL es la que obtienes después de desplegar tu Apps Script.
+            // ************************************************************
+            const appsScriptUrl = 'https://script.google.com/macros/s/AKfycbzN7A5k1-_EfQ_5Z9X4T4XjzkWGcgiE81cRquhsxFQj_nXhTSgy3n3JIRReMEO78J3a/exec'; 
 
             const tableBody = document.querySelector('tbody');
             const finalScoreSpan = document.getElementById('final-score');
@@ -335,7 +339,7 @@
 
             tableBody.addEventListener('click', (event) => {
                 const clickedCell = event.target.closest('td');
-                if (!clickedCell || clickedCell.cellIndex === 0) {
+                if (!clickedCell || clickedCell.cellIndex === 0) { // Evita seleccionar la primera columna de criterio
                     return;
                 }
 
@@ -393,8 +397,17 @@
 
                 const nombre = document.getElementById('nombre-evaluado').value;
                 const servicio = document.getElementById('servicio').value;
-                const finalScore = finalScoreSpan.textContent;
+                const finalScore = finalScoreSpan.textContent; // Obtiene el texto formateado
                 const performanceLevel = performanceLevelSpan.textContent;
+
+                // Validación básica de campos
+                if (!nombre.trim() || !servicio.trim() || Object.values(scores).some(score => score === 0)) {
+                    statusMessage.textContent = 'Por favor, complete todos los campos y seleccione una calificación para cada criterio.';
+                    statusMessage.style.color = 'orange';
+                    saveButton.disabled = false;
+                    return;
+                }
+
 
                 const data = {
                     nombre: nombre,
@@ -411,18 +424,36 @@
                             'Content-Type': 'application/json'
                         },
                         body: JSON.stringify(data),
+                        // ************************************************************
+                        // IMPORTANTE: Modo CORS. 'no-cors' no funcionará si necesitas leer la respuesta.
+                        // Para leer la respuesta (como `response.ok`), necesitas 'cors'.
+                        // El servidor de Apps Script (doPost) debe configurar el "Access-Control-Allow-Origin"
+                        // para que esto funcione. Google Apps Script lo hace automáticamente al desplegar.
+                        // ************************************************************
+                        mode: 'cors' 
                     });
 
-                    if (response.ok) {
+                    // Si el servidor de Apps Script no responde con el MimeType JSON correcto
+                    // o no permite CORS, `response.json()` podría fallar.
+                    // Aquí asumimos que Apps Script responde con JSON.
+                    const result = await response.json(); 
+
+                    if (result.status === 'success') {
                         statusMessage.textContent = '¡Evaluación guardada con éxito!';
                         statusMessage.style.color = 'green';
+                        // Opcional: limpiar los campos o resetear la rúbrica
+                        // document.getElementById('nombre-evaluado').value = '';
+                        // document.getElementById('servicio').value = '';
+                        // Object.keys(scores).forEach(key => scores[key] = 0);
+                        // tableBody.querySelectorAll('.selected').forEach(td => td.classList.remove('selected'));
+                        // updateScore();
                     } else {
-                        statusMessage.textContent = 'Error al guardar la evaluación. Por favor, inténtelo de nuevo.';
+                        statusMessage.textContent = `Error al guardar: ${result.message}`;
                         statusMessage.style.color = 'red';
                     }
                 } catch (error) {
                     console.error('Error:', error);
-                    statusMessage.textContent = 'Error de conexión. Verifique su red.';
+                    statusMessage.textContent = `Error de conexión o servidor: ${error.message}. Asegúrate de que la URL de Apps Script es correcta y está desplegada.`;
                     statusMessage.style.color = 'red';
                 } finally {
                     saveButton.disabled = false;
