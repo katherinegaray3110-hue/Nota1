@@ -11,7 +11,17 @@
         header p { margin: 5px 0 0; font-size: 1em; opacity: 0.9; }
         main { max-width: 1000px; margin: 0 auto; background: #fff; padding: 30px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-radius: 8px; }
         h2 { color: #0056b3; border-bottom: 2px solid #e9ecef; padding-bottom: 5px; margin-top: 25px; }
-        .info-section input { border: none; border-bottom: 1px solid #ccc; font-size: 1em; padding: 2px; width: 300px; margin-left: 5px; }
+        
+        /* Estilos base para los inputs */
+        .info-section input { 
+            border: none; 
+            border-bottom: 1px solid #ccc; 
+            font-size: 1em; 
+            padding: 2px; 
+            width: 300px; /* Ancho para pantallas grandes */
+            margin-left: 5px; 
+        }
+
         .instructions-section p { font-size: 0.95em; color: #555; }
         table { width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 20px; }
         thead th { background-color: #007bff; color: #fff; font-weight: bold; text-align: center; padding: 12px 8px; border-top-left-radius: 5px; border-top-right-radius: 5px; }
@@ -29,7 +39,27 @@
         #save-button:hover { background-color: #0056b3; }
         #save-button:disabled { background-color: #ccc; cursor: not-allowed; }
         #status-message { margin-top: 15px; font-size: 1em; font-weight: bold; }
+
+        /* --- Media Query para Responsividad --- */
         @media (max-width: 768px) {
+            body { padding: 10px; }
+            main { padding: 15px; }
+            header h1 { font-size: 1.4em; }
+
+            /* Ajuste para que los inputs ocupen todo el ancho y se apilen debajo del texto */
+            .info-section p {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .info-section input {
+                width: 100%;
+                box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+                margin-left: 0;
+                margin-top: 5px;
+            }
+
+            /* --- Estilos de la tabla responsiva (ya estaban bien) --- */
             table, thead, tbody, th, td, tr { display: block; }
             thead tr { position: absolute; top: -9999px; left: -9999px; }
             tr { margin-bottom: 20px; border: 1px solid #dee2e6; border-radius: 5px; }
@@ -55,7 +85,6 @@
             <p><strong>SERVICO:</strong> <input type="text" id="servicio" placeholder="Escriba aquí el servicio"></p>
         </section>
 
-        <!-- El resto del HTML no cambia -->
         <section class="instructions-section">
             <h2>Objetivo</h2><p>Valorar el nivel de conocimientos adquiridos por el estudiante en el área de fisiopatología, identificando su comprensión de los procesos fisiopatológicos, su capacidad de análisis, integración clínica y aplicación a situaciones prácticas.</p>
             <h2>Instrucciones</h2><p>De acuerdo a los criterios de evaluación, se sumarán los puntajes y se dividirán entre los 4 criterios evaluados para obtener la calificación final.</p>
