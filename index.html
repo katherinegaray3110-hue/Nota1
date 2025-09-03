@@ -46,12 +46,15 @@
             main { padding: 15px; }
             header h1 { font-size: 1.4em; }
 
-            /* Ajuste para que los inputs ocupen todo el ancho y se apilen debajo del texto */
+            /* --- CORRECCIÓN 1: Campos de Nombre y Servicio --- */
+            /* Apila la etiqueta y el input verticalmente */
             .info-section p {
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
+                margin-bottom: 15px; /* Añade espacio entre los campos */
             }
+            /* El input ahora ocupa todo el ancho disponible */
             .info-section input {
                 width: 100%;
                 box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
@@ -59,16 +62,59 @@
                 margin-top: 5px;
             }
 
-            /* --- Estilos de la tabla responsiva (ya estaban bien) --- */
+            /* --- CORRECCIÓN 2: Tabla de la Rúbrica --- */
             table, thead, tbody, th, td, tr { display: block; }
-            thead tr { position: absolute; top: -9999px; left: -9999px; }
-            tr { margin-bottom: 20px; border: 1px solid #dee2e6; border-radius: 5px; }
-            td { border: none; border-bottom: 1px solid #dee2e6; text-align: right; padding-left: 50%; position: relative; }
-            td:before { position: absolute; left: 6px; width: 45%; padding-right: 10px; white-space: nowrap; text-align: left; font-weight: bold; }
-            tr#conocimiento td:nth-of-type(2):before { content: "Excelente:"; } tr#conocimiento td:nth-of-type(3):before { content: "Bueno:"; } tr#conocimiento td:nth-of-type(4):before { content: "Regular:"; } tr#conocimiento td:nth-of-type(5):before { content: "Deficiente:"; }
-            tr#razonamiento td:nth-of-type(2):before { content: "Excelente:"; } tr#razonamiento td:nth-of-type(3):before { content: "Bueno:"; } tr#razonamiento td:nth-of-type(4):before { content: "Regular:"; } tr#razonamiento td:nth-of-type(5):before { content: "Deficiente:"; }
-            tr#aplicacion td:nth-of-type(2):before { content: "Excelente:"; } tr#aplicacion td:nth-of-type(3):before { content: "Bueno:"; } tr#aplicacion td:nth-of-type(4):before { content: "Regular:"; } tr#aplicacion td:nth-of-type(5):before { content: "Deficiente:"; }
-            tr#claridad td:nth-of-type(2):before { content: "Excelente:"; } tr#claridad td:nth-of-type(3):before { content: "Bueno:"; } tr#claridad td:nth-of-type(4):before { content: "Regular:"; } tr#claridad td:nth-of-type(5):before { content: "Deficiente:"; }
+            thead tr { position: absolute; top: -9999px; left: -9999px; } /* Oculta la cabecera original */
+            
+            tr { 
+                margin-bottom: 20px; 
+                border: 1px solid #dee2e6; 
+                border-radius: 5px; 
+                overflow: hidden; /* Evita que los fondos de las celdas se salgan */
+            }
+
+            /* Cambia el layout de las celdas a un formato de bloque apilado */
+            td {
+                border: none;
+                border-bottom: 1px solid #e9ecef; /* Separador más suave */
+                text-align: left; /* Alinea el texto a la izquierda */
+                padding: 12px;
+                position: relative; /* Mantenemos la posición relativa para el ::before */
+            }
+            tr td:last-child {
+                border-bottom: none; /* Elimina el borde de la última celda en cada "tarjeta" */
+            }
+
+            /* Hace que la etiqueta y el contenido de la celda se apilen verticalmente */
+            td:before {
+                /* Quitamos el posicionamiento absoluto y el ancho fijo */
+                position: static; 
+                display: block; /* La etiqueta ahora es un bloque que ocupa su propia línea */
+                font-weight: bold;
+                color: #0056b3; /* Color distintivo para la etiqueta */
+                margin-bottom: 6px; /* Espacio entre la etiqueta y la descripción */
+                /* El contenido (ej. "Excelente:") se sigue asignando abajo */
+            }
+
+            tr#conocimiento td:nth-of-type(2):before { content: "Excelente (100):"; }
+            tr#conocimiento td:nth-of-type(3):before { content: "Bueno (80):"; }
+            tr#conocimiento td:nth-of-type(4):before { content: "Regular (60):"; }
+            tr#conocimiento td:nth-of-type(5):before { content: "Deficiente (0):"; }
+
+            tr#razonamiento td:nth-of-type(2):before { content: "Excelente (100):"; }
+            tr#razonamiento td:nth-of-type(3):before { content: "Bueno (80):"; }
+            tr#razonamiento td:nth-of-type(4):before { content: "Regular (60):"; }
+            tr#razonamiento td:nth-of-type(5):before { content: "Deficiente (0):"; }
+
+            tr#aplicacion td:nth-of-type(2):before { content: "Excelente (100):"; }
+            tr#aplicacion td:nth-of-type(3):before { content: "Bueno (80):"; }
+            tr#aplicacion td:nth-of-type(4):before { content: "Regular (60):"; }
+            tr#aplicacion td:nth-of-type(5):before { content: "Deficiente (0):"; }
+
+            tr#claridad td:nth-of-type(2):before { content: "Excelente (100):"; }
+            tr#claridad td:nth-of-type(3):before { content: "Bueno (80):"; }
+            tr#claridad td:nth-of-type(4):before { content: "Regular (60):"; }
+            tr#claridad td:nth-of-type(5):before { content: "Deficiente (0):"; }
         }
     </style>
 </head>
@@ -109,8 +155,8 @@
     </main>
 
     <script>
+        // --- El JavaScript no necesita ningún cambio. Funciona perfectamente. ---
         document.addEventListener('DOMContentLoaded', () => {
-            // URL de tu aplicación web de Google Apps Script. Ya está correcta.
             const appsScriptUrl = 'https://script.google.com/macros/s/AKfycbzN7A5k1-_EfQ_5Z9X4T4XjzkWGcgiE81cRquhsxFQj_nXhTSgy3n3JIRReMEO78J3a/exec';
 
             const tableBody = document.querySelector('tbody');
