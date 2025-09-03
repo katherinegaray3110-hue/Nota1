@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rúbrica de Evaluación – Fisiopatología</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.8em;
+        }
+
+        header p {
+            margin: 5px 0 0;
+            font-size: 1em;
+            opacity: 0.9;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h2 {
+            color: #0056b3;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 5px;
+            margin-top: 25px;
+        }
+
+        /* Sección de información y instrucciones */
+        .info-section input {
+            border: none;
+            border-bottom: 1px solid #ccc;
+            font-size: 1em;
+            padding: 2px;
+            width: 300px;
+            margin-left: 5px;
+        }
+
+        .instructions-section p {
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        /* Tabla de la rúbrica */
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 20px;
+        }
+
+        thead th {
+            background-color: #007bff;
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+            padding: 12px 8px;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+
+        tbody td {
+            border: 1px solid #dee2e6;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        tbody tr:hover td {
+            background-color: #e9ecef;
+        }
+
+        tbody td.selected {
+            background-color: #28a745;
+            color: #fff;
+            border-color: #218838;
+            transform: scale(1.02);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        tbody td:first-child {
+            font-weight: bold;
+            background-color: #f8f9fa;
+            text-align: left;
+            cursor: default;
+            border-right: none;
+        }
+
+        /* Sección de resultados y botones */
+        .results-section {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .result-box {
+            background-color: #eaf5ff;
+            border: 1px solid #cce5ff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        #final-score {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #007bff;
+            margin-right: 10px;
+        }
+
+        #performance-level {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #28a745; /* Color por defecto */
+        }
+
+        .score-scale {
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        #save-button {
+            padding: 12px 25px;
+            font-size: 1.1em;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #save-button:hover {
+            background-color: #0056b3;
+        }
+
+        #save-button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        #status-message {
+            margin-top: 15px;
+            font-size: 1em;
+            font-weight: bold;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+
+            tr {
+                margin-bottom: 20px;
+                border: 1px solid #dee2e6;
+                border-radius: 5px;
+            }
+
+            td {
+                border: none;
+                border-bottom: 1px solid #dee2e6;
+                text-align: right;
+                padding-left: 50%;
+                position: relative;
+            }
+
+            td:before {
+                position: absolute;
+                left: 6px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                text-align: left;
+                font-weight: bold;
+            }
+
+            /* Asignar etiquetas a las celdas para el modo móvil */
+            tr#conocimiento td:nth-of-type(2):before { content: "Excelente:"; }
+            tr#conocimiento td:nth-of-type(3):before { content: "Bueno:"; }
+            tr#conocimiento td:nth-of-type(4):before { content: "Regular:"; }
+            tr#conocimiento td:nth-of-type(5):before { content: "Deficiente:"; }
+
+            tr#razonamiento td:nth-of-type(2):before { content: "Excelente:"; }
+            tr#razonamiento td:nth-of-type(3):before { content: "Bueno:"; }
+            tr#razonamiento td:nth-of-type(4):before { content: "Regular:"; }
+            tr#razonamiento td:nth-of-type(5):before { content: "Deficiente:"; }
+
+            tr#aplicacion td:nth-of-type(2):before { content: "Excelente:"; }
+            tr#aplicacion td:nth-of-type(3):before { content: "Bueno:"; }
+            tr#aplicacion td:nth-of-type(4):before { content: "Regular:"; }
+            tr#aplicacion td:nth-of-type(5):before { content: "Deficiente:"; }
+
+            tr#claridad td:nth-of-type(2):before { content: "Excelente:"; }
+            tr#claridad td:nth-of-type(3):before { content: "Bueno:"; }
+            tr#claridad td:nth-of-type(4):before { content: "Regular:"; }
+            tr#claridad td:nth-of-type(5):before { content: "Deficiente:"; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Rúbrica de Evaluación Teórica – Módulo de Fisiopatología</h1>
+        <p>Sistema de Evaluación del Componente Teórico</p>
+    </header>
+
+    <main>
+        <section class="info-section">
+            <p><strong>GRADO Y NOMBRE DEL ENFERMERO (A) EVALUADO:</strong> <input type="text" id="nombre-evaluado" placeholder="Escriba aquí el nombre"></p>
+            <p><strong>SERVICO:</strong> <input type="text" id="servicio" placeholder="Escriba aquí el servicio"></p>
+        </section>
+
+        <section class="instructions-section">
+            <h2>Objetivo</h2>
+            <p>Valorar el nivel de conocimientos adquiridos por el estudiante en el área de fisiopatología, identificando su comprensión de los procesos fisiopatológicos, su capacidad de análisis, integración clínica y aplicación a situaciones prácticas.</p>
+            <h2>Instrucciones</h2>
+            <p>De acuerdo a los criterios de evaluación, se sumarán los puntajes y se dividirán entre los 4 criterios evaluados para obtener la calificación final.</p>
+        </section>
+
+        <section class="rubric-section">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Criterio</th>
+                        <th>Excelente (100)</th>
+                        <th>Bueno (80)</th>
+                        <th>Regular (60)</th>
+                        <th>Deficiente (0)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="conocimiento">
+                        <td>Conocimiento conceptual</td>
+                        <td data-score="100">Demuestra dominio completo de conceptos fisiopatológicos, sin errores.</td>
+                        <td data-score="80">Presenta dominio adecuado con leves imprecisiones.</td>
+                        <td data-score="60">Manejo limitado de conceptos, con varios errores.</td>
+                        <td data-score="0">Desconoce conceptos fundamentales.</td>
+                    </tr>
+                    <tr id="razonamiento">
+                        <td>Razonamiento crítico y analítico</td>
+                        <td data-score="100">Integra teoría con casos clínicos de manera lógica y profunda.</td>
+                        <td data-score="80">Integra conocimientos con leves fallas en el análisis.</td>
+                        <td data-score="60">Dificultad para relacionar conceptos con casos clínicos.</td>
+                        <td data-score="0">No logra integrar teoría con práctica.</td>
+                    </tr>
+                    <tr id="aplicacion">
+                        <td>Aplicación del conocimiento</td>
+                        <td data-score="100">Resuelve problemas y preguntas aplicadas con precisión clínica.</td>
+                        <td data-score="80">Responde adecuadamente, con pequeños errores de interpretación.</td>
+                        <td data-score="60">Presenta respuestas incompletas o poco aplicables.</td>
+                        <td data-score="0">Respuestas inadecuadas, sin aplicación clínica.</td>
+                    </tr>
+                    <tr id="claridad">
+                        <td>Claridad y precisión en las respuestas</td>
+                        <td data-score="100">Uso correcto y fluido de la terminología médica, con redacción coherente.</td>
+                        <td data-score="80">Terminología adecuada con pequeños errores de redacción.</td>
+                        <td data-score="60">Uso impreciso de términos, con errores frecuentes.</td>
+                        <td data-score="0">Respuestas confusas, sin coherencia ni terminología médica.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="results-section">
+            <div class="result-box">
+                <p>CALIFICACIÓN FINAL: <span id="final-score">0.00</span></p>
+                <p>Nivel de desempeño: <span id="performance-level">No satisfactorio</span></p>
+            </div>
+            <p class="score-scale">
+                <strong>Escala de Calificación Final:</strong>
+                90 – 100: Excelente | 80 – 89: Muy bueno | 70 – 79: Aceptable | 60 – 69: Deficiente | < 60: No satisfactorio
+            </p>
+            <div class="button-container">
+                <button id="save-button">Guardar Evaluación</button>
+            </div>
+            <p id="status-message"></p>
+        </section>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const appsScriptUrl = 'https://script.google.com/macros/s/AKfycbzN7A5k1-_EfQ_5Z9X4T4XjzkWGcgiE81cRquhsxFQj_nXhTSgy3n3JIRReMEO78J3a/exec';
+
+            const tableBody = document.querySelector('tbody');
+            const finalScoreSpan = document.getElementById('final-score');
+            const performanceLevelSpan = document.getElementById('performance-level');
+            const saveButton = document.getElementById('save-button');
+            const statusMessage = document.getElementById('status-message');
+
+            const totalCriterios = 4;
+            const scores = {
+                conocimiento: 0,
+                razonamiento: 0,
+                aplicacion: 0,
+                claridad: 0
+            };
+
+            tableBody.addEventListener('click', (event) => {
+                const clickedCell = event.target.closest('td');
+                if (!clickedCell || clickedCell.cellIndex === 0) {
+                    return;
+                }
+
+                const row = clickedCell.closest('tr');
+                const rowId = row.id;
+                const score = parseInt(clickedCell.dataset.score, 10);
+
+                // Remover 'selected' de otras celdas en la misma fila
+                Array.from(row.querySelectorAll('td')).forEach(td => td.classList.remove('selected'));
+                // Agregar 'selected' a la celda clicada
+                clickedCell.classList.add('selected');
+
+                // Almacenar el puntaje
+                scores[rowId] = score;
+
+                updateScore();
+            });
+
+            function updateScore() {
+                const scoreArray = Object.values(scores);
+                const totalScore = scoreArray.reduce((sum, score) => sum + score, 0);
+                const finalScore = totalScore / totalCriterios;
+
+                finalScoreSpan.textContent = finalScore.toFixed(2);
+                updatePerformanceLevel(finalScore);
+            }
+
+            function updatePerformanceLevel(score) {
+                let level = '';
+                let color = '#dc3545'; // Default color for 'No satisfactorio'
+
+                if (score >= 90) {
+                    level = 'Excelente';
+                    color = '#28a745';
+                } else if (score >= 80) {
+                    level = 'Muy bueno';
+                    color = '#007bff';
+                } else if (score >= 70) {
+                    level = 'Aceptable';
+                    color = '#ffc107';
+                } else if (score >= 60) {
+                    level = 'Deficiente';
+                    color = '#fd7e14';
+                } else {
+                    level = 'No satisfactorio';
+                }
+
+                performanceLevelSpan.textContent = level;
+                performanceLevelSpan.style.color = color;
+            }
+
+            saveButton.addEventListener('click', async () => {
+                statusMessage.textContent = 'Guardando...';
+                saveButton.disabled = true;
+
+                const nombre = document.getElementById('nombre-evaluado').value;
+                const servicio = document.getElementById('servicio').value;
+                const finalScore = finalScoreSpan.textContent;
+                const performanceLevel = performanceLevelSpan.textContent;
+
+                const data = {
+                    nombre: nombre,
+                    servicio: servicio,
+                    calificaciones: scores,
+                    puntajeFinal: finalScore,
+                    nivelDesempeno: performanceLevel
+                };
+
+                try {
+                    const response = await fetch(appsScriptUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data),
+                    });
+
+                    if (response.ok) {
+                        statusMessage.textContent = '¡Evaluación guardada con éxito!';
+                        statusMessage.style.color = 'green';
+                    } else {
+                        statusMessage.textContent = 'Error al guardar la evaluación. Por favor, inténtelo de nuevo.';
+                        statusMessage.style.color = 'red';
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    statusMessage.textContent = 'Error de conexión. Verifique su red.';
+                    statusMessage.style.color = 'red';
+                } finally {
+                    saveButton.disabled = false;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
