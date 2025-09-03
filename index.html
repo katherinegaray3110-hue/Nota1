@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rúbrica de Evaluación – Fisiopatología</title>
     <style>
-        /* Tus estilos CSS van aquí (sin cambios) */
         body { font-family: 'Arial', sans-serif; background-color: #f4f7f9; color: #333; line-height: 1.6; margin: 0; padding: 20px; }
         header { background-color: #007bff; color: #fff; padding: 20px; text-align: center; border-radius: 8px; margin-bottom: 20px; }
         header h1 { margin: 0; font-size: 1.8em; }
@@ -56,77 +55,33 @@
             <p><strong>SERVICO:</strong> <input type="text" id="servicio" placeholder="Escriba aquí el servicio"></p>
         </section>
 
+        <!-- El resto del HTML no cambia -->
         <section class="instructions-section">
-            <h2>Objetivo</h2>
-            <p>Valorar el nivel de conocimientos adquiridos por el estudiante en el área de fisiopatología, identificando su comprensión de los procesos fisiopatológicos, su capacidad de análisis, integración clínica y aplicación a situaciones prácticas.</p>
-            <h2>Instrucciones</h2>
-            <p>De acuerdo a los criterios de evaluación, se sumarán los puntajes y se dividirán entre los 4 criterios evaluados para obtener la calificación final.</p>
+            <h2>Objetivo</h2><p>Valorar el nivel de conocimientos adquiridos por el estudiante en el área de fisiopatología, identificando su comprensión de los procesos fisiopatológicos, su capacidad de análisis, integración clínica y aplicación a situaciones prácticas.</p>
+            <h2>Instrucciones</h2><p>De acuerdo a los criterios de evaluación, se sumarán los puntajes y se dividirán entre los 4 criterios evaluados para obtener la calificación final.</p>
         </section>
-
         <section class="rubric-section">
             <table>
-                <thead>
-                    <tr>
-                        <th>Criterio</th>
-                        <th>Excelente (100)</th>
-                        <th>Bueno (80)</th>
-                        <th>Regular (60)</th>
-                        <th>Deficiente (0)</th>
-                    </tr>
-                </thead>
+                <thead><tr><th>Criterio</th><th>Excelente (100)</th><th>Bueno (80)</th><th>Regular (60)</th><th>Deficiente (0)</th></tr></thead>
                 <tbody>
-                    <tr id="conocimiento">
-                        <td>Conocimiento conceptual</td>
-                        <td data-score="100">Demuestra dominio completo de conceptos fisiopatológicos, sin errores.</td>
-                        <td data-score="80">Presenta dominio adecuado con leves imprecisiones.</td>
-                        <td data-score="60">Manejo limitado de conceptos, con varios errores.</td>
-                        <td data-score="0">Desconoce conceptos fundamentales.</td>
-                    </tr>
-                    <tr id="razonamiento">
-                        <td>Razonamiento crítico y analítico</td>
-                        <td data-score="100">Integra teoría con casos clínicos de manera lógica y profunda.</td>
-                        <td data-score="80">Integra conocimientos con leves fallas en el análisis.</td>
-                        <td data-score="60">Dificultad para relacionar conceptos con casos clínicos.</td>
-                        <td data-score="0">No logra integrar teoría con práctica.</td>
-                    </tr>
-                    <tr id="aplicacion">
-                        <td>Aplicación del conocimiento</td>
-                        <td data-score="100">Resuelve problemas y preguntas aplicadas con precisión clínica.</td>
-                        <td data-score="80">Responde adecuadamente, con pequeños errores de interpretación.</td>
-                        <td data-score="60">Presenta respuestas incompletas o poco aplicables.</td>
-                        <td data-score="0">Respuestas inadecuadas, sin aplicación clínica.</td>
-                    </tr>
-                    <tr id="claridad">
-                        <td>Claridad y precisión en las respuestas</td>
-                        <td data-score="100">Uso correcto y fluido de la terminología médica, con redacción coherente.</td>
-                        <td data-score="80">Terminología adecuada con pequeños errores de redacción.</td>
-                        <td data-score="60">Uso impreciso de términos, con errores frecuentes.</td>
-                        <td data-score="0">Respuestas confusas, sin coherencia ni terminología médica.</td>
-                    </tr>
+                    <tr id="conocimiento"><td>Conocimiento conceptual</td><td data-score="100">Demuestra dominio completo de conceptos fisiopatológicos, sin errores.</td><td data-score="80">Presenta dominio adecuado con leves imprecisiones.</td><td data-score="60">Manejo limitado de conceptos, con varios errores.</td><td data-score="0">Desconoce conceptos fundamentales.</td></tr>
+                    <tr id="razonamiento"><td>Razonamiento crítico y analítico</td><td data-score="100">Integra teoría con casos clínicos de manera lógica y profunda.</td><td data-score="80">Integra conocimientos con leves fallas en el análisis.</td><td data-score="60">Dificultad para relacionar conceptos con casos clínicos.</td><td data-score="0">No logra integrar teoría con práctica.</td></tr>
+                    <tr id="aplicacion"><td>Aplicación del conocimiento</td><td data-score="100">Resuelve problemas y preguntas aplicadas con precisión clínica.</td><td data-score="80">Responde adecuadamente, con pequeños errores de interpretación.</td><td data-score="60">Presenta respuestas incompletas o poco aplicables.</td><td data-score="0">Respuestas inadecuadas, sin aplicación clínica.</td></tr>
+                    <tr id="claridad"><td>Claridad y precisión en las respuestas</td><td data-score="100">Uso correcto y fluido de la terminología médica, con redacción coherente.</td><td data-score="80">Terminología adecuada con pequeños errores de redacción.</td><td data-score="60">Uso impreciso de términos, con errores frecuentes.</td><td data-score="0">Respuestas confusas, sin coherencia ni terminología médica.</td></tr>
                 </tbody>
             </table>
         </section>
-
         <section class="results-section">
-            <div class="result-box">
-                <p>CALIFICACIÓN FINAL: <span id="final-score">0.00</span></p>
-                <p>Nivel de desempeño: <span id="performance-level">No satisfactorio</span></p>
-            </div>
-            <p class="score-scale">
-                <strong>Escala de Calificación Final:</strong>
-                90 – 100: Excelente | 80 – 89: Muy bueno | 70 – 79: Aceptable | 60 – 69: Deficiente | < 60: No satisfactorio
-            </p>
-            <div class="button-container">
-                <button id="save-button">Guardar Evaluación</button>
-            </div>
+            <div class="result-box"><p>CALIFICACIÓN FINAL: <span id="final-score">0.00</span></p><p>Nivel de desempeño: <span id="performance-level">No satisfactorio</span></p></div>
+            <p class="score-scale"><strong>Escala de Calificación Final:</strong> 90 – 100: Excelente | 80 – 89: Muy bueno | 70 – 79: Aceptable | 60 – 69: Deficiente | < 60: No satisfactorio</p>
+            <div class="button-container"><button id="save-button">Guardar Evaluación</button></div>
             <p id="status-message"></p>
         </section>
-
     </main>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Asegúrate de que esta URL sea la correcta de tu despliegue de Apps Script.
+            // URL de tu aplicación web de Google Apps Script. Ya está correcta.
             const appsScriptUrl = 'https://script.google.com/macros/s/AKfycbzN7A5k1-_EfQ_5Z9X4T4XjzkWGcgiE81cRquhsxFQj_nXhTSgy3n3JIRReMEO78J3a/exec';
 
             const tableBody = document.querySelector('tbody');
@@ -136,25 +91,17 @@
             const statusMessage = document.getElementById('status-message');
 
             const totalCriterios = 4;
-            const scores = {
-                conocimiento: null, // Usamos null para saber si ya se ha seleccionado algo.
-                razonamiento: null,
-                aplicacion: null,
-                claridad: null
-            };
+            const scores = { conocimiento: null, razonamiento: null, aplicacion: null, claridad: null };
 
             tableBody.addEventListener('click', (event) => {
                 const clickedCell = event.target.closest('td');
                 if (!clickedCell || clickedCell.cellIndex === 0) return;
-
                 const row = clickedCell.closest('tr');
                 const rowId = row.id;
                 const score = parseInt(clickedCell.dataset.score, 10);
-
                 Array.from(row.querySelectorAll('td')).forEach(td => td.classList.remove('selected'));
                 clickedCell.classList.add('selected');
                 scores[rowId] = score;
-
                 updateScore();
             });
 
@@ -162,7 +109,6 @@
                 const scoreArray = Object.values(scores).filter(s => s !== null);
                 const totalScore = scoreArray.reduce((sum, score) => sum + score, 0);
                 const finalScore = scoreArray.length < totalCriterios ? 0 : totalScore / totalCriterios;
-
                 finalScoreSpan.textContent = finalScore.toFixed(2);
                 updatePerformanceLevel(finalScore);
             }
@@ -170,12 +116,10 @@
             function updatePerformanceLevel(score) {
                 let level = 'No satisfactorio';
                 let color = '#dc3545';
-
                 if (score >= 90) { level = 'Excelente'; color = '#28a745'; } 
                 else if (score >= 80) { level = 'Muy bueno'; color = '#007bff'; } 
                 else if (score >= 70) { level = 'Aceptable'; color = '#ffc107'; } 
                 else if (score >= 60) { level = 'Deficiente'; color = '#fd7e14'; }
-
                 performanceLevelSpan.textContent = level;
                 performanceLevelSpan.style.color = color;
             }
@@ -183,20 +127,16 @@
             saveButton.addEventListener('click', async () => {
                 const nombre = document.getElementById('nombre-evaluado').value;
                 const servicio = document.getElementById('servicio').value;
-                
-                // Validación de campos
                 if (!nombre.trim() || !servicio.trim()) {
                     statusMessage.textContent = 'Por favor, complete el nombre y el servicio.';
                     statusMessage.style.color = 'orange';
                     return;
                 }
-
                 if (Object.values(scores).some(s => s === null)) {
                     statusMessage.textContent = 'Por favor, seleccione una calificación para todos los criterios.';
                     statusMessage.style.color = 'orange';
                     return;
                 }
-
                 statusMessage.textContent = 'Guardando...';
                 statusMessage.style.color = 'black';
                 saveButton.disabled = true;
@@ -210,35 +150,23 @@
                 };
 
                 try {
-                    // ---- INICIO DE LA CORRECCIÓN CLAVE ----
-                    // Cambiamos el 'Content-Type' a 'text/plain'. Esto convierte la solicitud en una "solicitud simple"
-                    // que no requiere una verificación de seguridad CORS previa (preflight), evitando el NetworkError.
-                    // Google Apps Script puede procesar el JSON enviado como texto sin problemas.
                     const response = await fetch(appsScriptUrl, {
                         method: 'POST',
-                        headers: {
-                          'Content-Type': 'text/plain;charset=utf-8',
-                        },
+                        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
                         body: JSON.stringify(data), 
                     });
-                    // ---- FIN DE LA CORRECCIÓN CLAVE ----
                     
                     if (!response.ok) {
-                        // Si la respuesta del servidor no es exitosa (ej. error 500)
                         throw new Error(`Respuesta del servidor no fue OK: ${response.statusText}`);
                     }
-
-                    const result = await response.json(); // La respuesta sigue siendo un JSON que podemos leer.
-
+                    const result = await response.json();
                     if (result.status === 'success') {
                         statusMessage.textContent = result.message;
                         statusMessage.style.color = 'green';
                     } else {
-                        // Muestra el mensaje de error específico enviado desde Apps Script
                         statusMessage.textContent = `Error del servidor: ${result.message}`;
                         statusMessage.style.color = 'red';
                     }
-
                 } catch (error) {
                     console.error('Error en fetch:', error);
                     statusMessage.textContent = `Error de conexión. Verifique la consola (F12) para más detalles.`;
